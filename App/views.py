@@ -10,7 +10,6 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 from django.template.loader import render_to_string
-from App.custom import model_dict, cart_count
 from django.views.decorators.csrf import csrf_exempt
 
 from.models import *
