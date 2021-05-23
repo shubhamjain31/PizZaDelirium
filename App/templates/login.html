@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+
+<div class="container"> 
+  <div class="row justify-content-start">
+  </div>
+  <div class="row justify-content-center mt-4 mb-2">
+    <h2><span class="bg-light text-info rounded p-1">Login to place your order</span></h2>
+  </div>
+  <div class="row justify-content-center mb-3">
+    <form action="{% url 'login' %}" method="post" class="bg-light p-3">{% csrf_token %}
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" placeholder="Enter Username" name="username" required="" id="username">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" required="">
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-success">SignIn</button>
+      </div>
+    </form>
+  </div>
+    <div class="row justify-content-center mb-2 context-message">
+    {% if message %}
+      {{ message }}
+    {% endif %}
+    </div>
+  <div class="row justify-content-center text-center">
+    <span style="margin-right: 0.5em;">New here?</span><a href="{% url 'register' %}">Register</a>
+  </div>
+</div>
+
+{% endblock %}
