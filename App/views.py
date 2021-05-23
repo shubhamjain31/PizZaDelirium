@@ -2,14 +2,21 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User
+
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.db.models import ProtectedError
-from django.http import HttpResponse, HttpResponseRedirect, Http404 
+from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 from django.template.loader import render_to_string
+from App.custom import model_dict, cart_count
+from django.views.decorators.csrf import csrf_exempt
+
+from.models import *
 
 # Create your views here.
+
 
 def home(request):
 	return render(request, 'index.html')
@@ -60,3 +67,37 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('home'))
+
+# **************************************************************** All Orders **************************************************************
+
+def orders_view(request ):
+	if request.user.is_authenticated:
+		pizza = Pizza.objects.all()
+		orders = Order.objects.filter(user = request.user)
+		context = {'pizza' : pizza, 'orders' : orders}
+		return render(request , 'orders.html', context)
+	return HttpResponseRedirect(reverse('login'))
+
+# **************************************************************** Order user **************************************************************
+
+def order_view(request , order_id):
+    order = Order.objects.filter(order_id=order_id).first()
+    if order is None:
+        return HttpResponseRedirect('/')
+    
+    context = {'order' : order}
+    return render(request , 'order.html', context)
+
+@csrf_exempt
+def order_pizza(request):
+    user = request.user
+    data = json.loads(request.body)
+    
+    try:
+        pizza =  Pizza.objects.get(id=data.get('id'))
+        order = Order(user=user, pizza=pizza , amount = pizza.price)
+        order.save()
+        return JsonResponse({'message': 'Success'})
+        
+    except Pizza.DoesNotExist:
+        return JsonResponse({'error': 'Something went wrong'})
