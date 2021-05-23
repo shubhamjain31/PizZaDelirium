@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'App',
     'channels',   # Django Channels
 ]
@@ -73,6 +74,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'PizZaDelirium.wsgi.application'
 
 # *************************************** Socket Setup ************************************************
+# redis-server --port 6360 (command for start a redis server)
 
 ASGI_APPLICATION = "PizZaDelirium.asgi.application"
 
@@ -121,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 

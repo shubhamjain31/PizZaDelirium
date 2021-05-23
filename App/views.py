@@ -67,6 +67,57 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('home'))
 
+# **************************************************************** All Menu List *************************************************************
+
+@csrf_exempt
+def menu_view(request):
+	all_menus 		= MenuItem.objects.all().order_by('-date_created')
+
+	ORDER_COLUMN_CHOICES = {
+	'0': '',
+	'1': 'category',
+	'2':  'kind',
+	'3': 'price',
+	'4': 'size',
+	'5': 'extra'}
+
+	if request.method == 'POST':
+		start         = int(request.POST.get('start'))
+		length        = int(request.POST.get("length"))
+		draw          = int(request.POST.get('draw'))
+		order_column  = request.POST.get('order[0][column]', None)
+		order		  = request.POST.get('order[0][dir]', None)
+		
+		# check if initial sorting has None value
+		if order_column is None:
+			order_column = ''
+		else:
+			order_column = ORDER_COLUMN_CHOICES[order_column]
+			# django orm '-' -> desc
+			if order == 'desc':
+				order_column = '-' + order_column
+
+		all_menus 		= MenuItem.objects.all().order_by('-date_created').values()
+
+
+		if order_column == '-' or order_column == '':
+			all_menus 		= all_menus
+		else:
+			all_menus 		= all_menus.order_by(order_column)
+
+		lt = []
+		for item in all_menus[start:start+length]:
+			item['extra']     		= 'Yes' if item['extra'] == True else 'No'
+			lt.append(item)
+
+		return JsonResponse({"draw": draw,
+				"recordsTotal": all_menus.count(),
+				"recordsFiltered": all_menus.count(),
+				'data':lt})
+
+	params = {"all_menus":all_menus}
+	return render(request, 'menu.html', params)
+
 # **************************************************************** All Orders **************************************************************
 
 def orders_view(request ):
@@ -100,3 +151,6 @@ def order_pizza(request):
         
     except Pizza.DoesNotExist:
         return JsonResponse({'error': 'Something went wrong'})
+
+def about_view(request):
+    return render(request , 'about.html')

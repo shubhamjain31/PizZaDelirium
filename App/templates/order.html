@@ -3,10 +3,12 @@
 {% block body %}
 
 
-
-<div class="container mt-5 pt-5">
-  <h3>Order id - {{order.order_id}}</h3>
-  <p>Amount - ₹ {{order.amount}}</p>
+<div class="text-center mt-4">
+    <h2><span class="bg-dark text-white rounded p-1">Status</span></h2>
+  </div>
+<div class="container mt-4 pt-5 bg-light p-5">
+  <h3><span class="text-danger">Order ID -</span> {{order.order_id}}</h3>
+  <p><span class="text-warning">Amount -</span> ₹ {{order.amount}}</p>
   <span class="badge badge-primary" id="status">Primary</span>
   <div class="progress mt-4">
     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="50"

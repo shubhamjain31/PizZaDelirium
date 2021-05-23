@@ -14,8 +14,9 @@ class MenuItem(models.Model):
     category 		= models.CharField(max_length=20)
     kind 			= models.CharField(max_length=30)
     price 			= models.DecimalField(max_digits=5, decimal_places=2)
-    size 			= models.CharField(max_length=5, blank=True)
+    size 			= models.CharField(max_length=7, blank=True)
     extra 			= models.BooleanField(default=False)
+    date_created    = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         if self.extra:

@@ -21,6 +21,18 @@
     <link rel="stylesheet" media="screen" href="/static/css/theme.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
+
+    <link href="/static/css/menu.css" rel="stylesheet" />
+
+
     {% block head %} {% endblock %}
 </head>
 <!-- Body-->
@@ -41,18 +53,13 @@
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{% url 'menu' %}">Menu</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{% url 'orders' %}">Orders</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Cart (3)</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'about' %}">About</a>
       </li>
     </ul>
     <div class="form-inline my-2 my-lg-0" action="{% url 'register' %}">
@@ -73,12 +80,21 @@
 <footer class="footer" id="footer">
   <div class="container">
     <ul class="list-unstyled list-inline text-center py-2">
+      {% if not user.is_authenticated %}
       <li class="list-inline-item">
         <h5 class="mb-1 text-info rounded">Register for free</h5>
       </li>
       <li class="list-inline-item">
         <a href="{% url 'register' %}" class="btn btn-outline-white btn-rounded btn btn-danger">Sign up!</a>
       </li>
+      {% else %}
+       <li class="list-inline-item">
+        <h5 class="mb-1 text-info rounded">Welcome To PizZaDelirium</h5>
+      </li>
+      <li class="list-inline-item">
+        <a href="{% url 'about' %}" class="btn btn-outline-white btn-rounded btn btn-danger">About</a>
+      </li>
+      {% endif %}
     </ul>
   </div>
   <!-- Copyright -->
@@ -90,10 +106,10 @@
 </footer>
 
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
+ -->
 {% block js %} {% endblock %}
 </body>
 

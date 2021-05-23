@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Menu {% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+	<div class="text-center mt-2">
+	    <h2><span class="bg-dark text-white rounded p-1">About PizZaDelirium</span></h2>
+   </div>
+	<div class="jumbotron mt-4 text-white">
+	  <h1 class="display-4">Hello, User!</h1>
+	  <p class="lead">At PizZaDelirium, we don’t just make pizza. We make people happy. Pizza Hut was built on the belief that pizza night should be special, and we carry that belief into everything we do. With more than 55 years of experience under our belts, we understand how to best serve our customers through tried and true service principles: We create food we’re proud to serve and deliver it fast, with a smile.</p>
+	  </p>
+	</div>
+</div>
+
+<style>
+    /* footer css */
+    .footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:60px;
+}
+.jumbotron {
+    min-height: 400px;
+    background-image: url('/static/images/pizza_home.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+</style>
+
+{% endblock %}

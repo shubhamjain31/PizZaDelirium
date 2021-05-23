@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load humanize %}
 
 {% block title %} Orders {% endblock %}
 {% block body %}
@@ -51,7 +52,7 @@
                                 data-toggle="modal">{{order.order_id}}</a></td>
                         <td class="py-3">{{order.date}}</td>
                         <td class="py-3"><span class="badge badge-info m-0">{{order.status}}</span></td>
-                        <td class="py-3">{{order.amount}}</td>
+                        <td class="py-3">Rs {{order.amount}}</td>
                         <td class="py-3">
                             <a href="{% url 'order' order.order_id %}" class="btn btn-danger btn-sm">View</a>
                         </td>

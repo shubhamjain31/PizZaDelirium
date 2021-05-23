@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Menu {% endblock %}
+
+{% block body %}
+
+{% if message %}
+<div class="context-message">
+{{ message }}
+</div>
+{% endif %}
+
+<div class="container">
+  <div class="text-center mt-2">
+    <h2><span class="bg-dark text-white rounded p-1">All Menu List</span></h2>
+  </div>
+  <div class="my-4">
+    <table class="table table-bordered" id="view_menu" data-url="{% url 'menu' %}" style="width: 100%">
+	  <thead class="text-center">
+	    <tr>
+	      <th scope="col">Sr No.</th>
+	      <th scope="col">Category</th>
+	      <th scope="col">Kind</th>
+	      <th scope="col">Prize (Rs.)</th>
+	      <th scope="col">Size</th>
+	      <th scope="col">Extra</th>
+	    </tr>
+	  </thead>
+	  <tbody class="text-center">
+	    
+	  </tbody>
+	</table>
+  </div>  
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{% static 'js/menu.js' %}"></script>
+{% endblock %}
