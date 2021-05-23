@@ -19,7 +19,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'PizZaDelirium.settings')
 application = get_asgi_application()
 
 ws_pattern= [
-    # path('ws/pizza/<order_id>',consumers.OrderProgress),
+    path('ws/pizza/<order_id>',consumers.OrderProgress),
 ]
 
 application= ProtocolTypeRouter(
