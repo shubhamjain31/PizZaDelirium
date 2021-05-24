@@ -36,6 +36,12 @@ function view_menus(){
       "processing":true,
       "searching": false,
       "paging": true,
+      "order": [],
+      "columnDefs": [
+        { "orderable": false, "className": 'reorder', "targets": [0] },
+        { "targets": [], "orderable": false }
+      ],
+      "aaSorting": [],
     //   "aLengthMenu": [[2, 25, 100, -1], [2, 25, 100, "All"]],
     //   "iDisplayLength": 2,
       "aLengthMenu": [[10, 25, 100], [10, 25, 100]],

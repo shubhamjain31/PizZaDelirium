@@ -138,6 +138,8 @@ def order_view(request , order_id):
     context = {'order' : order}
     return render(request , 'order.html', context)
 
+# **************************************************************** Ordered pizza ************************************************************
+
 @csrf_exempt
 def order_pizza(request):
     user = request.user
