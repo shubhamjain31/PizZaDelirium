@@ -4,5 +4,3 @@ venv/
 *.pot
 *.pyc
 __pycache__/
-
-.gitattributes
