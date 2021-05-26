@@ -22,5 +22,5 @@ This is the Home page of the website.
 Here is the List of All Menus
 ![One_Page](https://github.com/shubhamjain31/PizZaDelirium/blob/main/Screenshots/image_two.png)
 
-And this is the main thing which is updated by *Web Sockets*
+And this is the main part which is updated by *Web Sockets*
 ![One_Page](https://github.com/shubhamjain31/PizZaDelirium/blob/main/Screenshots/image_four.png)
