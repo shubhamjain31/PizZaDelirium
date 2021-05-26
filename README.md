@@ -13,6 +13,7 @@ This project is based on Django channels. This is a real-time ***pizza order upd
 2) ***Back-End*** : Python Django  
 3) ***Database*** : SQLite
 4) ***Channels*** : Web Sockets
+4) ***Server*** : Redis Server for Sockets
 
 ### Screenshots 
 This is the Home page of the website.
