@@ -6,7 +6,7 @@ from .views import *
 
 urlpatterns = [
     path('' ,home, name='home' ),
-    path('login', login_view, name='login'),
+    path('login/', login_view, name='login'),
     path('logout', logout_view, name='logout'),
     path('register', register_view, name='register'),
     path('menu', menu_view, name='menu'),
@@ -21,5 +21,4 @@ def get_absolute_url(self):
 
 def get_url(request):
     if request.is_ajax() and request.method == 'POST':
-    	print('dh')
     	url = reverse('menu')

@@ -62,7 +62,7 @@ function view_menus(){
         { data: 'kind', },
         { data: 'price', },
         { data: 'size', },
-        {data: 'extra',},
+        {data: 'extra', className: 'text-lowercase'},
         // { "data": "action", className: 'dt-body-right'},
         
     ],
