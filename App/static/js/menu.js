@@ -9,27 +9,30 @@ function view_menus(){
       // "sScrollY": "400px",
   
       "sScrollX": true ,
-      // dom: 'Blfrtip',
-    //   buttons: [
-    //     {
-    //       "extend": 'csv',
-    //       "text": '<button type="button" class="btn btn-primary btn-sm">Export All</button>',
-    //       "titleAttr": 'csv',                               
-    //       // "action": , 
-    //   },
-    //   // {
-    //   //   text: '<button type="button" class="btn btn-primary">Export</button>',
-    //   //   action: function ( e, dt, node, config ) {
-    //   //   }
-    //   // },
-    //   {
-    //     // text: '<button type="submit" id="delete" class="btn btn-primary btn-sm" style="display:none;">Delete</button>',
-    //     // action: deleteaction
-    //   },
-    // ],
-    // dom: '<"float-right"f><"row"<"col-sm-12 m-5"l>>',
-  
-    // dom: '<"float-left"f><"row"<"col-sm-4"l><"col-sm-4"><"col-sm-4">>',
+      select: true,
+    dom: 'Blfrtip',
+    buttons: [
+      {
+        "extend": 'csv',
+        "text": '<button type="button" class="btn btn-primary btn-sm">Export All</button>',
+        "titleAttr": 'csv',
+        // "action": newexportaction,
+        // "class":"align-items-center"
+      },
+      // {
+      //   text: '<button type="button" class="btn btn-primary">Export</button>',
+      //   action: function ( e, dt, node, config ) {
+      //   }
+      // },
+      {
+        text: '<button type="button" class="btn btn-primary btn-sm">Import</button>',
+        // action: importitems
+      },
+      // {
+      //   text: '<button type="submit" id="delete" class="btn btn-primary btn-sm" style="display:none;">Delete</button>',
+      //   // action: deleteaction
+      // },
+    ],
       "bSort": true,
       "bDestroy": true,
       serverSide: true,
